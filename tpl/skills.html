@@ -1,0 +1,50 @@
+<article>
+  <div class="col-md-12">
+    <div class="col-md-12">
+      <h1 class="with-icon" id="target">SKILLS</h1>
+    </div>
+    <div class="col-md-12">
+      <div ng-controller="EditableTableCtrl">
+        <form editable-form name="tableform" onaftersave="saveTable()" oncancel="cancel()" class="padding-left-big padding-right-half">
+
+          <!-- table -->
+          <table class="table table-bordered table-hover table-condensed">
+            <tr style="font-weight: bold">
+              <td style="width:60%">Technologies</td>
+              <td style="width:40%">Level</td>
+              <td style="width:30%"><span ng-show="tableform.$visible">Action</span></td>
+            </tr>
+            <tr ng-repeat="user in users | filter:filterUser">
+              <td>
+                <!-- editable username (text with validation) -->
+                <span editable-text="user.name" e-form="tableform" onbeforesave="checkName($data, user.id)">
+                  {{ user.name || 'empty' }}
+                </span>
+              </td>
+              <td>
+                <!-- editable status (select-local) -->
+                <span editable-select="user.status" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+                  {{ showStatus(user) }}
+                </span>
+              </td>
+              <td><button type="button" ng-show="tableform.$visible" ng-click="deleteUser(user.id)" class="btn btn-danger pull-right">Delete</button></td>
+            </tr>
+          </table>
+
+          <!-- buttons -->
+          <div class="btn-edit">
+            <button type="button" class="btn btn-default" ng-show="!tableform.$visible" ng-click="tableform.$show()">
+              Edit Skills
+            </button>
+          </div>
+          <div class="btn-form" ng-show="tableform.$visible">
+            <button type="button" ng-disabled="tableform.$waiting" ng-click="addUser()" class="btn btn-default pull-right">Add row</button>
+            <button type="submit" ng-disabled="tableform.$waiting" class="btn btn-primary">Save</button>
+            <button type="button" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()" class="btn btn-default">Cancel</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</article>

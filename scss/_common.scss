@@ -1,0 +1,109 @@
+html{
+  min-height: 100%;
+  position:relative;
+}
+body {
+  background-color: $grey-medium-light !important;
+  margin: 0;
+  padding:0;
+  font-family: 'Lato', Helvetica, Arial, sans-serif !important;
+}
+article {
+  background-color: $white !important;
+  overflow: hidden;
+  @include border-radius(8px);
+  margin: 20px 0px;
+  padding: 20px 0px;
+}
+
+.container-standard{
+  @include container-dimensions(1);
+}
+.container-wide{
+  @include container-dimensions(1.1);
+}
+.container-small{
+  @include container-dimensions(0.9);
+}
+.container-extra-small{
+  @include container-dimensions(0.6);
+}
+.content{
+  padding-bottom:150px;
+  @media(max-width:767px){
+    padding-bottom:300px;
+  }
+}
+
+//FONTS
+h1, h2, h3, h4, h5, h6 {
+  color: $grey-dark;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 36px;
+  font-weight: bold;
+  &.with-icon {
+    font-size: 30px;
+    color: $grey-dark;
+    list-style: none;
+    background-size:30px;
+    background-repeat:no-repeat;
+    background-position:left center;
+    padding-left: 45px;
+    margin-bottom: 25px;
+    margin-top: 20px;
+    &#tick {
+      background-image:url('../img/icons/tick.svg');
+    }
+    &#target {
+      background-image:url('../img/icons/target.svg');
+    }
+  }
+}
+h2 {
+  font-size: 24px;
+}
+
+input {
+  color: $grey-dark;
+  font-size: 18px;
+  @include border-radius(4px);
+  padding: 8px 0px 8px 5px;
+  border: 1px solid $grey-medium-dark;
+}
+
+.fadeInBlock {
+    opacity:0;
+}
+
+.no-padding {
+  @media(min-width:767px) {
+    padding: 0px !important;
+  }
+}
+.no-left-padding {
+  @media(min-width:767px) {
+    padding-left: 0px !important;
+  }
+}
+.padding-right-standard {
+  @media(min-width:767px) {
+    padding-right: 30px !important;
+  }
+}
+.padding-right-half {
+  @media(min-width:767px) {
+    padding-right: 15px !important;
+  }
+}
+.padding-left-big {
+  @media(min-width:767px) {
+    padding-left: 45px !important;
+  }
+}
+
+.inline-block {
+  display: inline-block !important;
+}

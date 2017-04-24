@@ -1,0 +1,14 @@
+{
+  "name": "upToWork",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Czarnocki",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^1.13.2"
+  }
+}

@@ -1,0 +1,76 @@
+general-info {
+  img {
+    max-height: 250px;
+  }
+  h2{
+    margin: 20px 0px;
+  }
+  p {
+    font-size: 18px;
+    color: $grey-dark;
+    list-style: none;
+    background-size:24px;
+    background-repeat:no-repeat;
+    background-position:left center;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    &.birthday {
+      background-image:url('../img/icons/calendar.svg');
+    }
+    &.location {
+      background-image:url('../img/icons/location.svg');
+    }
+    &.phone {
+      background-image:url('../img/icons/phone.svg');
+    }
+    &.mail {
+      background-image:url('../img/icons/mail.svg');
+    }
+  }
+  .btn {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  .btn-primary {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .btn-danger {
+    width: 100%;
+    margin-top: 10px;
+  }
+  input {
+    width: 100%;
+    &.name {
+      font-size: 36px;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    &.position {
+      margin: 10px 0px;
+      padding: 8px 0px 8px 5px;
+      font-size: 24px;
+    }
+    &.with-icon {
+      background-size:24px;
+      background-repeat:no-repeat;
+      background-position:left center;
+      margin-bottom: 10px;
+      padding: 7px 0px 7px 35px;
+      &.birthday {
+        background-image:url('../img/icons/calendar.svg');
+      }
+      &.location {
+        background-image:url('../img/icons/location.svg');
+      }
+      &.phone {
+        background-image:url('../img/icons/phone.svg');
+      }
+      &.mail {
+        background-image:url('../img/icons/mail.svg');
+      }
+    }
+  }
+}
