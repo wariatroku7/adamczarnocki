@@ -22,25 +22,6 @@ app.directive('skills', function(){
     templateUrl: './tpl/skills.html'
   };
 });
-app.directive('education', function(){
-  return {
-    restrict: 'E',
-    templateUrl: './tpl/education.html'
-  };
-});
-app.directive('courses', function(){
-  return {
-    restrict: 'E',
-    templateUrl: './tpl/courses.html'
-  };
-});
-app.directive('interests', function(){
-  return {
-    restrict: 'E',
-    templateUrl: './tpl/interests.html'
-  };
-});
-
 
 app.controller('generalInfoCtrl', function($scope, $http) {
     $http({

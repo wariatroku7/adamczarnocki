@@ -4,11 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "live-server"
   },
   "author": "Adam Czarnocki",
   "license": "ISC",
   "dependencies": {
+    "live-server": "^1.2.0",
     "webpack": "^1.13.2"
   }
 }
