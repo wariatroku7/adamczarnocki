@@ -1,13 +1,27 @@
-{
-      "position" : "Founder & UX/UI Designer & Front-end Developer",
-      "company" : "Spontap",
-      "start" : "05.2014",
-      "end" : "07.2016",
-      "tasks" : [
+[
+      {
+        "id" : 1,
+        "position" : "Front-end developer",
+        "company" : "Institute of Media Monitoring",
+        "start" : "11.2016",
+        "end" : "Currently",
+        "tasks" : [
+          {"id" : 1, "desc" : "Building from scratch entire completely new website for the biggest company monitoring media in Poland. In this project I used such technologies as HTML5, SASS, Javascript, jQuery, AngularJS and PHP with Wordpress elements. Also creating UI & UX for this website."},
+          {"id" : 2, "desc" : "Working on development of IMM web app and on e-mail newsletter with monitoring results collation."}
+        ]
+      },
+      {
+        "id" : 2,
+        "position" : "Founder & UX/UI Designer & Front-end Developer",
+        "company" : "Spontap",
+        "start" : "05.2014",
+        "end" : "07.2016",
+        "tasks" : [
           {"id" : 1, "desc" : "Building/coding some of subpages of spontap.com, using HTML5, SASS, JS, jQuery&PHP basics."},
           {"id" : 2, "desc" : "Creating concept and UX cases of Spontap mobile app."},
           {"id" : 3, "desc" : "Graphic project/interface of all Spontap mobile app’s screens."},
           {"id" : 4, "desc" : "UI & UX of spontap.com, website for regular users and business."},
           {"id" : 5, "desc" : "UI & UX of Spontap’s web app for business, spontap.com/panel."}
-      ]
-}
+        ]
+      }
+]

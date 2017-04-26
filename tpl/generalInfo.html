@@ -1,50 +1,39 @@
 <article ng-controller="generalInfoCtrl as info" class="no-padding">
+  <form editable-form name="infoform" onaftersave="saveTable()" oncancel="cancel()" class="padding-right-half">
+
   <div class="col-md-3 col-sm-12 no-padding">
     <img src="../img/profile_pic.png">
   </div>
   <div class="col-md-8 col-sm-12">
-    <h1 ng-hide="editorEnabled" ng-click="enableEditor()">{{info.name}}</h1>
-    <div ng-show="editorEnabled">
-      <input class="name" ng-model="editableTitle" ng-show="editorEnabled">
-    </div>
-    <h2 ng-hide="editorEnabled" ng-click="enableEditor()">{{info.position}}</h2>
-    <div ng-show="editorEnabled">
-      <input class="position" ng-model="editablePosition" ng-show="editorEnabled">
-    </div>
+    <h1 editable-text="info.name" e-form="infoform">{{info.name || "empty"}}</h1>
+    <h2 editable-text="info.position" e-form="infoform">{{info.position || "empty"}}</h2>
     <div class="row">
       <div class="col-md-5">
-        <p ng-hide="editorEnabled" ng-click="enableEditor()" class="phone">{{info.phone}}</p>
-        <div ng-show="editorEnabled">
-          <input class="with-icon phone" ng-model="editablePhone" ng-show="editorEnabled">
-        </div>
+        <p class="phone" editable-text="info.phone" e-form="infoform">{{info.phone || "empty"}}</p>
       </div>
       <div class="col-md-5">
-        <p ng-hide="editorEnabled" ng-click="enableEditor()" class="mail">{{info.mail}}</p>
-        <div ng-show="editorEnabled">
-          <input class="with-icon mail" ng-model="editableMail" ng-show="editorEnabled">
-        </div>
+        <p class="mail" editable-text="info.mail" e-form="infoform">{{info.mail || "empty"}}</p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-5">
-        <p ng-hide="editorEnabled" ng-click="enableEditor()" class="location">{{info.location}}</p>
-        <div ng-show="editorEnabled">
-          <input class="with-icon location" ng-model="editableLocation" ng-show="editorEnabled">
-        </div>
+        <p class="location" editable-text="info.location" e-form="infoform">{{info.location || "empty"}}</p>
       </div>
       <div class="col-md-5">
-        <p ng-hide="editorEnabled" ng-click="enableEditor()" class="birthday">{{info.birthday}}</p>
-        <div ng-show="editorEnabled">
-          <input class="with-icon birthday" ng-model="editableBirthday" ng-show="editorEnabled">
-        </div>
+        <p class="birthday" editable-text="info.birthday" e-form="infoform">{{info.birthday || "empty"}}</p>
       </div>
     </div>
   </div>
   <div class="col-md-1">
-    <button ng-hide="editorEnabled" type="button" name="button" ng-click="enableEditor()" class="btn btn-default pull-right">Edit General Info</button>
-    <div ng-show="editorEnabled" class="pull-right">
-      <button class="btn btn-primary" ng-click="save()">Save</button>
-      <button class="btn btn-danger" ng-click="disableEditor()">Cancel</button>.
+    <div class="btn-edit">
+      <button type="button" class="btn btn-default pull-right" ng-show="!infoform.$visible" ng-click="infoform.$show()">
+        Edit General Info
+      </button>
+      <div class="btn-form pull-right" ng-show="infoform.$visible">
+        <button type="button" ng-disabled="infoform.$waiting" ng-click="infoform.$cancel()" class="btn btn-default">Cancel</button>
+        <button type="submit" ng-disabled="infoform.$waiting" class="btn btn-primary">Save</button>
+      </div>
     </div>
   </div>
+</form>
 </article>

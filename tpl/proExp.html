@@ -1,67 +1,66 @@
 <article ng-controller="proExpCtrl as exps">
     <div class="col-md-12 col-sm-12">
-      <div class="col-md-8">
-        <h1 class="with-icon" id="tick">PROFESSIONAL EXPERIENCE</h1>
-      </div>
-      <div class="col-md-4 padding-right-standard">
-        <button ng-hide="editorEnabled" type="button" name="button" ng-click="enableEditor()" class="btn btn-default pull-right">Edit Experience</button>
-        <div ng-show="editorEnabled" class="pull-right">
-          <button class="btn btn-primary" ng-click="save()">Save</button>
-          <button class="btn btn-danger" ng-click="disableEditor()">Cancel</button>.
-        </div>
-      </div>
-      <div class="col-md-12">
-          <h2 ng-hide="editorEnabled" ng-click="enableEditor()">{{exps.position}}
-            <span ng-hide="editorEnabled" ng-click="enableEditor()">@{{exps.company}}</span>
-          </h2>
-          <div class="col-md-6 no-left-padding">
-            <div ng-show="editorEnabled">
-              <input class="position" ng-model="editablePosition" ng-show="editorEnabled">
+        <form editable-form name="expform" onaftersave="saveTable()" oncancel="cancel()" >
+          <div class="col-md-8">
+            <h1 class="with-icon" id="tick">PROFESSIONAL EXPERIENCE</h1>
+          </div>
+          <div class="col-md-4 buttons">        
+            <button type="button" class="btn btn-default pull-right margin-right-standard" ng-show="!expform.$visible" ng-click="expform.$show()">
+              Edit Experience
+            </button>
+            <div class="btn-form padding-right-standard" ng-show="expform.$visible">
+              <button type="button" ng-disabled="expform.$waiting" ng-click="addExp()" class="btn btn-default pull-right">Add position</button>
+              <button type="submit" ng-disabled="expform.$waiting" class="btn btn-primary pull-right">Save</button>
+              <button type="button" ng-disabled="expform.$waiting" ng-click="expform.$cancel()" class="btn btn-default pull-right">Cancel</button>
             </div>
           </div>
-          <div class="col-md-6">
-            <div ng-show="editorEnabled">
-              <input class="company" ng-model="editableCompany" ng-show="editorEnabled">
+          <div ng-repeat="exp in exps | filter: filterExp track by $index">
+            <div class="col-md-12 position">
+              <div class="row title">
+                <div>
+                  <h2 editable-text="exp.position" e-form="expform">
+                    {{ exp.position || 'empty' }}
+                  </h2>
+                </div>
+                <div>
+                  <h2 editable-text="exp.company" e-form="expform" class="company">
+                    @{{ exp.company || 'empty' }}
+                  </span>
+                </div>
+                <div class="pull-right padding-right-big">
+                  <div ng-show="expform.$visible">
+                    <button type="button" name="button" ng-click="deleteExp(exp.id)" class="btn btn-danger pull-right">Delete</button>
+                  </div>
+                </div>
+              </div>
+              <div class="row dates">
+                <div>
+                  <h3 editable-text="exp.start" e-form="expform">{{exp.start || 'empty' }}</h3>
+                </div>
+                <div>
+                  -
+                </div>
+                <div>
+                  <h3 editable-text="exp.end" e-form="expform">{{exp.end || 'empty' }}</h3>
+                </div>
+              </div>
+              <div class="row col-md-12">
+                <div class="list">
+                  <ol>
+                    <li ng-repeat="task in exp.tasks">
+                      <div editable-text="task.desc" e-form="expform">
+                        {{task.desc || 'empty' }}
+                      </div>
+                    </li>
+                  </ol>
+                  <div class="btn-form" ng-show="expform.$visible">
+                    <button type="button" ng-disabled="expform.$waiting" ng-click="addTask(exp.id-1)" class="btn btn-default pull-right">Add row</button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <h3 ng-hide="editorEnabled" ng-click="enableEditor()">{{exps.start}}</h3>
-          <div ng-show="editorEnabled" class="inline-block">
-            <input class="start" ng-model="editableStart" ng-show="editorEnabled">
-          </div>
-          <span> - </span>
-          <h3 ng-hide="editorEnabled" ng-click="enableEditor()">{{exps.end}}</h3>
-          <div ng-show="editorEnabled" class="inline-block">
-            <input class="end" ng-model="editableEnd" ng-show="editorEnabled">
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="list">
-            <ol>
-              <li ng-hide="editorEnabled" ng-click="enableEditor()">{{exps.tasks[0].desc}}</li>
-              <div ng-show="editorEnabled">
-                <input class="task" ng-model="editableTask0" ng-show="editorEnabled">
-              </div>
-              <li ng-hide="editorEnabled" ng-click="enableEditor()">{{exps.tasks[1].desc}}</li>
-              <div ng-show="editorEnabled">
-                <input class="task" ng-model="editableTask1" ng-show="editorEnabled">
-              </div>
-              <li ng-hide="editorEnabled" ng-click="enableEditor()">{{exps.tasks[2].desc}}</li>
-              <div ng-show="editorEnabled">
-                <input class="task" ng-model="editableTask2" ng-show="editorEnabled">
-              </div>
-              <li ng-hide="editorEnabled" ng-click="enableEditor()">{{exps.tasks[3].desc}}</li>
-              <div ng-show="editorEnabled">
-                <input class="task" ng-model="editableTask3" ng-show="editorEnabled">
-              </div>
-              <li ng-hide="editorEnabled" ng-click="enableEditor()">{{exps.tasks[4].desc}}</li>
-              <div ng-show="editorEnabled">
-                <input class="task" ng-model="editableTask4" ng-show="editorEnabled">
-              </div>
-            </ol>
-          </div>
-        </div>
       </div>
+    </form>
+    </div>
   </div>
 </article>

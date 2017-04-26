@@ -24,6 +24,7 @@ app.directive('skills', function(){
 });
 
 app.controller('generalInfoCtrl', function($scope, $http) {
+    $scope.info = [];
     $http({
         method : "GET",
         url : "/json/generalInfo.json"
@@ -33,34 +34,10 @@ app.controller('generalInfoCtrl', function($scope, $http) {
         $scope.info = response.statusText;
     });
 
-    $scope.editorEnabled = false;
-
-    $scope.enableEditor = function() {
-      $scope.editorEnabled = true;
-      $scope.editableTitle = $scope.info.name;
-      $scope.editablePosition = $scope.info.position;
-      $scope.editablePhone = $scope.info.phone;
-      $scope.editableMail = $scope.info.mail;
-      $scope.editableBirthday = $scope.info.birthday;
-      $scope.editableLocation = $scope.info.location;
-    };
-
-    $scope.disableEditor = function() {
-      $scope.editorEnabled = false;
-    };
-
-    $scope.save = function() {
-      $scope.info.name = $scope.editableTitle;
-      $scope.info.position = $scope.editablePosition;
-      $scope.info.phone = $scope.editablePhone;
-      $scope.info.mail = $scope.editableMail;
-      $scope.info.birthday = $scope.editableBirthday;
-      $scope.info.location = $scope.editableLocation;
-      $scope.disableEditor();
-    };
 });
 
-app.controller('proExpCtrl', function($scope, $http) {
+app.controller('proExpCtrl', function($scope, $http, $filter) {
+    $scope.exps = [];
     $http({
         method : "GET",
         url : "/json/proExp.json"
@@ -70,79 +47,80 @@ app.controller('proExpCtrl', function($scope, $http) {
         $scope.exps = response.statusText;
     });
 
-    $scope.editorEnabled = false;
-
-    $scope.enableEditor = function() {
-      $scope.editorEnabled = true;
-      $scope.editablePosition = $scope.exps.position;
-      $scope.editableCompany = $scope.exps.company;
-      $scope.editableStart = $scope.exps.start;
-      $scope.editableEnd = $scope.exps.end;
-      $scope.editableTask0 = $scope.exps.tasks[0].desc;
-      $scope.editableTask1 = $scope.exps.tasks[1].desc;
-      $scope.editableTask2 = $scope.exps.tasks[2].desc;
-      $scope.editableTask3 = $scope.exps.tasks[3].desc;
-      $scope.editableTask4 = $scope.exps.tasks[4].desc;
+    // mark tech as deleted
+    $scope.deleteExp = function(id) {
+      var filtered = $filter('filter')($scope.exps, {id: id});
+      if (filtered.length) {
+        filtered[0].isDeleted = true;
+      }
     };
 
-    $scope.disableEditor = function() {
-      $scope.editorEnabled = false;
+    // filter exps to show
+    $scope.filterExp = function(exp) {
+      return exp.isDeleted !== true;
     };
 
-    $scope.save = function() {
-      $scope.exps.position = $scope.editablePosition;
-      $scope.exps.company = $scope.editableCompany;
-      $scope.exps.start = $scope.editableStart;
-      $scope.exps.end = $scope.editableEnd;
-      $scope.exps.tasks[0].desc = $scope.editableTask0;
-      $scope.exps.tasks[1].desc = $scope.editableTask1;
-      $scope.exps.tasks[2].desc = $scope.editableTask2;
-      $scope.exps.tasks[3].desc = $scope.editableTask3;
-      $scope.exps.tasks[4].desc = $scope.editableTask4;
-      $scope.disableEditor();
+    // add tech
+    $scope.addExp = function() {
+      $scope.exps.push({
+        id: $scope.exps.length+1,
+        position: '',
+        company: '',
+        start: '',
+        end: '',
+        tasks: ['']
+      });
     };
+
+    $scope.addTask = function(i) {
+      $scope.exps[i].tasks.push({
+        id: $scope.exps[i].tasks.length,
+        desc: ''
+      });
+    };
+
 });
 
 
 //Xeditable controller for the table with skills
 app.controller('EditableTableCtrl', function($scope, $filter, $http, $q) {
-  $scope.users = [
-    {id: 1, name: 'HTML5 & SASS & CSS3 & Bootstrap', status: 1},
-    {id: 2, name: 'jQuery & Javascript & AngularJS', status: 2},
-    {id: 3, name: 'PHP & MySQL & Wordpress', status: 3}
-  ];
 
-  $scope.statuses = [
-    {value: 1, text: 'Advanced'},
-    {value: 2, text: 'Intermediate'},
-    {value: 3, text: 'Basic'}
-  ];
+  $http({
+      method : "GET",
+      url : "/json/skills.json"
+  }).then(function mySuccess(response) {
+      $scope.techs = response.data.skills["techs"];
+      $scope.statuses = response.data.skills["statuses"];
+  }, function myError(response) {
+      $scope.techs = response.statusText;
+      $scope.statuses = response.statusText;
+  });
 
-  $scope.showStatus = function(user) {
+  $scope.showStatus = function(tech) {
     var selected = [];
-    if(user.status) {
-      selected = $filter('filter')($scope.statuses, {value: user.status});
+    if(tech.status) {
+      selected = $filter('filter')($scope.statuses, {value: tech.status});
     }
     return selected.length ? selected[0].text : 'Not set';
   };
 
-  // filter users to show
-  $scope.filterUser = function(user) {
-    return user.isDeleted !== true;
+  // filter techs to show
+  $scope.filterTech = function(tech) {
+    return tech.isDeleted !== true;
   };
 
-  // mark user as deleted
-  $scope.deleteUser = function(id) {
-    var filtered = $filter('filter')($scope.users, {id: id});
+  // mark tech as deleted
+  $scope.deleteTech = function(id) {
+    var filtered = $filter('filter')($scope.techs, {id: id});
     if (filtered.length) {
       filtered[0].isDeleted = true;
     }
   };
 
-  // add user
-  $scope.addUser = function() {
-    $scope.users.push({
-      id: $scope.users.length+1,
+  // add tech
+  $scope.addTech = function() {
+    $scope.techs.push({
+      id: $scope.techs.length+1,
       name: '',
       status: null,
       group: null,
@@ -152,15 +130,15 @@ app.controller('EditableTableCtrl', function($scope, $filter, $http, $q) {
 
   // cancel all changes
   $scope.cancel = function() {
-    for (var i = $scope.users.length; i--;) {
-      var user = $scope.users[i];
+    for (var i = $scope.techs.length; i--;) {
+      var tech = $scope.techs[i];
       // undelete
-      if (user.isDeleted) {
-        delete user.isDeleted;
+      if (tech.isDeleted) {
+        delete tech.isDeleted;
       }
       // remove new
-      if (user.isNew) {
-        $scope.users.splice(i, 1);
+      if (tech.isNew) {
+        $scope.techs.splice(i, 1);
       }
     };
   };
@@ -168,15 +146,15 @@ app.controller('EditableTableCtrl', function($scope, $filter, $http, $q) {
   // save edits
   $scope.saveTable = function() {
     var results = [];
-    for (var i = $scope.users.length; i--;) {
-      var user = $scope.users[i];
-      // actually delete user
-      if (user.isDeleted) {
-        $scope.users.splice(i, 1);
+    for (var i = $scope.techs.length; i--;) {
+      var tech = $scope.techs[i];
+      // actually delete tech
+      if (tech.isDeleted) {
+        $scope.techs.splice(i, 1);
       }
       // mark as not new
-      if (user.isNew) {
-        user.isNew = false;
+      if (tech.isNew) {
+        tech.isNew = false;
       }
 
     }

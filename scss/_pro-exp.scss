@@ -1,23 +1,48 @@
 pro-exp {
-  h2 {
-    padding-left: 45px;
-    margin-top: 30px;
+  .position {
+    padding: 20px 0px 20px 30px;
+    border-bottom: 1px solid $grey-medium-light;
+    .title {
+      div {
+        display: inline-block;
+      }
+      input {
+        font-size: 24px;
+        padding: 18px 12px !important;
+        margin-left: 45px;
+      }
+      h2 {
+        padding-left: 45px;
+        padding-top: 0px;
+        margin-top: 0px;
+      }
+      .company {
+        font-weight: bold;
+        font-size: 24px;
+        color: $grey-dark;
+        padding-left: 5px;
+      }
+    }
+  }
+  .dates {
+    padding: 15px 0px 0px 45px;
+    div {
+      display: inline-block;
+    }
+    h3 {
+      display: inline;
+      font-size: 18px;
+      color: $blue;
+      padding-top: 10px;
+    }
     span {
-      font-weight: bold;
+      color: $grey-dark;
     }
   }
-  h3 {
-    display: inline;
-    font-size: 18px;
-    color: $blue;
-    padding-top: 10px;
-    &:first-of-type {
-      padding-left: 45px;
-    }
-  }
+
   .list {
     padding-top: 10px;
-    padding-left: 45px;
+    padding-left: 30px;
     &:first-of-type {
       padding-top: 25px;
     }
@@ -31,19 +56,23 @@ pro-exp {
       }
     }
   }
+  .buttons {
+      overflow: hidden;
+      padding-right: 0px;
+  }
   .btn {
     font-size: 18px;
     margin-top: 20px;
   }
-  .btn-primary {
-    width: 100%;
-    margin-top: 10px;
-  }
   .btn-danger {
-    width: 100%;
-    margin-top: 10px;
+  //  width: 100%;
+    margin-top: 0px;
+  }
+  span {
+    width: 100% !important;
   }
   input {
+    padding: 6px 12px !important;
     &.position {
       margin: 0px 20px 10px 45px;
       font-size: 24px;

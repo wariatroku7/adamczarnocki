@@ -1,0 +1,36 @@
+{
+  "skills":
+  {
+    "techs": [
+    {
+      "id": 1,
+      "name": "HTML5 & SASS & CSS3 & Bootstrap",
+      "status": 1
+    },
+    {
+      "id": 2,
+      "name": "jQuery & Javascript & AngularJS",
+      "status": 2
+    },
+    {
+      "id": 3,
+      "name": "PHP & MySQL & Wordpress",
+      "status": 3
+    }
+  ],
+  "statuses": [
+    {
+      "value": 1,
+      "text": "Advanced"
+    },
+    {
+      "value": 2,
+      "text": "Intermediate"
+    },
+    {
+      "value": 3,
+      "text": "Basic"
+    }
+  ]
+}
+}
