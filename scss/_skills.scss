@@ -21,5 +21,8 @@ skills {
   }
   .btn {
     font-size: 18px !important;
+    @media(max-width: 767px) {
+      margin-bottom: 10px;
+    }
   }
 }

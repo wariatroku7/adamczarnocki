@@ -1,37 +1,41 @@
 <article ng-controller="generalInfoCtrl as info" class="no-padding">
   <form editable-form name="infoform" onaftersave="saveTable()" oncancel="cancel()" class="padding-right-half">
 
-  <div class="col-md-3 col-sm-12 no-padding">
+  <div class="col-md-3 col-sm-12 no-padding mobile-center">
     <img src="../img/profile_pic.png">
   </div>
-  <div class="col-md-8 col-sm-12">
-    <h1 editable-text="info.name" e-form="infoform">{{info.name || "empty"}}</h1>
-    <h2 editable-text="info.position" e-form="infoform">{{info.position || "empty"}}</h2>
-    <div class="row">
-      <div class="col-md-5">
-        <p class="phone" editable-text="info.phone" e-form="infoform">{{info.phone || "empty"}}</p>
+  <div class="col-md-9 col-sm-12">
+    <div class="col-md-12 no-left-padding no-mobile-padding">
+        <div class="btn-edit pull-right">
+          <button type="button" class="btn btn-default pull-right" ng-show="!infoform.$visible" ng-click="infoform.$show()">
+            Edit General Info
+          </button>
+          <div class="btn-form pull-right" ng-show="infoform.$visible">
+            <button type="button" ng-disabled="infoform.$waiting" ng-click="infoform.$cancel()" class="btn btn-default">Cancel</button>
+            <button type="submit" ng-disabled="infoform.$waiting" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      <div class="name">
+        <h1 editable-text="info.name" e-form="infoform">{{info.name || "empty"}}</h1>
       </div>
-      <div class="col-md-5">
-        <p class="mail" editable-text="info.mail" e-form="infoform">{{info.mail || "empty"}}</p>
+    </div>
+    <div class="col-md-12 position no-left-padding no-mobile-padding">
+      <h2 editable-text="info.position" e-form="infoform">{{info.position || "empty"}}</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-4 phone">
+        <p editable-text="info.phone" e-form="infoform">{{info.phone || "empty"}}</p>
+      </div>
+      <div class="col-md-4 mail">
+        <p editable-text="info.mail" e-form="infoform">{{info.mail || "empty"}}</p>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-5">
-        <p class="location" editable-text="info.location" e-form="infoform">{{info.location || "empty"}}</p>
+      <div class="col-md-4 location">
+        <p editable-text="info.location" e-form="infoform">{{info.location || "empty"}}</p>
       </div>
-      <div class="col-md-5">
-        <p class="birthday" editable-text="info.birthday" e-form="infoform">{{info.birthday || "empty"}}</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-1">
-    <div class="btn-edit">
-      <button type="button" class="btn btn-default pull-right" ng-show="!infoform.$visible" ng-click="infoform.$show()">
-        Edit General Info
-      </button>
-      <div class="btn-form pull-right" ng-show="infoform.$visible">
-        <button type="button" ng-disabled="infoform.$waiting" ng-click="infoform.$cancel()" class="btn btn-default">Cancel</button>
-        <button type="submit" ng-disabled="infoform.$waiting" class="btn btn-primary">Save</button>
+      <div class="col-md-4 birthday">
+        <p editable-text="info.birthday" e-form="infoform">{{info.birthday || "empty"}}</p>
       </div>
     </div>
   </div>

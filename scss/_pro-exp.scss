@@ -2,30 +2,42 @@ pro-exp {
   .position {
     padding: 20px 0px 20px 30px;
     border-bottom: 1px solid $grey-medium-light;
+    @media(max-width: 767px) {
+      padding-left: 15px;
+    }
     .title {
       div {
         display: inline-block;
       }
       input {
         font-size: 24px;
-        padding: 18px 12px !important;
         margin-left: 45px;
+        @media(max-width: 767px) {
+          margin-left: 0px;
+        }
       }
       h2 {
         padding-left: 45px;
         padding-top: 0px;
         margin-top: 0px;
+        @media(max-width: 767px) {
+          padding-left: 0px;
+        }
       }
       .company {
         font-weight: bold;
         font-size: 24px;
         color: $grey-dark;
-        padding-left: 5px;
+        padding-left: 0px;
       }
     }
   }
   .dates {
     padding: 15px 0px 0px 45px;
+    @media(max-width: 767px) {
+      padding-left: 0px;
+      padding-top: 5px;
+    }
     div {
       display: inline-block;
     }
@@ -43,6 +55,9 @@ pro-exp {
   .list {
     padding-top: 10px;
     padding-left: 30px;
+    @media(max-width: 767px) {
+      padding-left: 0px;
+    }
     &:first-of-type {
       padding-top: 25px;
     }
@@ -59,6 +74,13 @@ pro-exp {
   .buttons {
       overflow: hidden;
       padding-right: 0px;
+      .btn-form {        
+        @media(max-width: 767px) {
+          float: left;
+          margin-bottom: 20px;
+          overflow: hidden;
+        }
+      }
   }
   .btn {
     font-size: 18px;
@@ -67,12 +89,19 @@ pro-exp {
   .btn-danger {
   //  width: 100%;
     margin-top: 0px;
+    @media(max-width: 767px) {
+      margin-right: 15px;
+      margin-top: 10px;
+    }
   }
   span {
     width: 100% !important;
   }
   input {
     padding: 6px 12px !important;
+    @media(max-width: 767px) {
+      margin-top: 10px;
+    }
     &.position {
       margin: 0px 20px 10px 45px;
       font-size: 24px;

@@ -1,17 +1,17 @@
 <article ng-controller="proExpCtrl as exps">
     <div class="col-md-12 col-sm-12">
         <form editable-form name="expform" onaftersave="saveTable()" oncancel="cancel()" >
-          <div class="col-md-8">
+          <div class="col-md-8 no-mobile-padding">
             <h1 class="with-icon" id="tick">PROFESSIONAL EXPERIENCE</h1>
           </div>
-          <div class="col-md-4 buttons">        
+          <div class="col-md-4 buttons no-mobile-padding">
             <button type="button" class="btn btn-default pull-right margin-right-standard" ng-show="!expform.$visible" ng-click="expform.$show()">
               Edit Experience
             </button>
-            <div class="btn-form padding-right-standard" ng-show="expform.$visible">
-              <button type="button" ng-disabled="expform.$waiting" ng-click="addExp()" class="btn btn-default pull-right">Add position</button>
-              <button type="submit" ng-disabled="expform.$waiting" class="btn btn-primary pull-right">Save</button>
-              <button type="button" ng-disabled="expform.$waiting" ng-click="expform.$cancel()" class="btn btn-default pull-right">Cancel</button>
+            <div class="btn-form padding-right-standard pull-right" ng-show="expform.$visible">
+              <button type="button" ng-disabled="expform.$waiting" ng-click="expform.$cancel()" class="btn btn-default">Cancel</button>
+              <button type="button" ng-disabled="expform.$waiting" ng-click="addExp()" class="btn btn-default">Add position</button>
+              <button type="submit" ng-disabled="expform.$waiting" class="btn btn-primary">Save</button>
             </div>
           </div>
           <div ng-repeat="exp in exps | filter: filterExp track by $index">

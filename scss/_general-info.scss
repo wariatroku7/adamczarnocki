@@ -15,62 +15,84 @@ general-info {
     padding-left: 35px;
     margin-bottom: 20px;
     margin-top: 10px;
-    &.birthday {
+  }
+  .name {
+    display: inline-block;
+    input {
+      font-size: 36px !important;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-top: 20px;
+      padding: 6px 5px !important;
+    }
+  }
+  .btn-edit {
+    display: inline-block;
+    overflow:hidden;
+  }
+  .position {
+    input {
+      margin: 10px 0px;
+      padding: 8px 0px 8px 5px;
+      font-size: 24px !important;
+    }
+    span {
+      @media(max-width: 767px) {
+        width: 100%;
+      }
+    }
+  }
+
+  .birthday {
+    p {
       background-image:url('../img/icons/calendar.svg');
     }
-    &.location {
+    span {
+      width: 100%;
+    }
+    input {
+      margin-top: 10px;
+    }
+  }
+  .location {
+    p {
       background-image:url('../img/icons/location.svg');
     }
-    &.phone {
+    span {
+      width: 100%;
+    }
+    input {
+      margin-top: 10px;
+    }
+  }
+  .phone {
+    p {
       background-image:url('../img/icons/phone.svg');
     }
-    &.mail {
+    span {
+      width: 100%;
+    }
+    input {
+      margin-top: 10px;
+    }
+  }
+  .mail {
+    p {
       background-image:url('../img/icons/mail.svg');
+    }
+    span {
+      width: 100%;
+    }
+    input {
+      margin-top: 10px;
     }
   }
   .btn {
     font-size: 18px;
     margin-top: 20px;
   }
-  .btn-primary {
-    width: 100%;
-    margin-top: 10px;
-  }
   .btn-danger {
     width: 100%;
     margin-top: 10px;
-  }
-  input {
-    width: 100%;
-    &.name {
-      font-size: 36px;
-      text-transform: uppercase;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-    &.position {
-      margin: 10px 0px;
-      padding: 8px 0px 8px 5px;
-      font-size: 24px;
-    }
-    &.with-icon {
-      background-size:24px;
-      background-repeat:no-repeat;
-      background-position:left center;
-      margin-bottom: 10px;
-      padding: 7px 0px 7px 35px;
-      &.birthday {
-        background-image:url('../img/icons/calendar.svg');
-      }
-      &.location {
-        background-image:url('../img/icons/location.svg');
-      }
-      &.phone {
-        background-image:url('../img/icons/phone.svg');
-      }
-      &.mail {
-        background-image:url('../img/icons/mail.svg');
-      }
-    }
   }
 }
